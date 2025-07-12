@@ -2,32 +2,46 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        double result = 0;
+        double a = reqemTelebEt("a`ni daxil edin: ");
+        double b = reqemTelebEt("b`ni daxil edin: ");
 
 
-        System.out.print("a`ni daxil edin: ");
-        double a = new Scanner(System.in).nextDouble();
-        System.out.print("b`ni daxil edin: ");
-        double b = new Scanner(System.in).nextDouble();
-
-        System.out.println("emeliyyat secimi edin:" +
+        char operations = emeliyyatSecimi("emeliyyat secimi edin:" +
                 "\n 1: toplama" +
                 "\n 2: cixma" +
                 "\n 3: vurma" +
                 "\n 4: bolme");
-        char operations = new Scanner(System.in).nextLine().charAt(0);
 
-        if (operations == '1'){
-            result = a + b;
-        }else if (operations == '2'){
-            result = a - b;
-        }else if (operations == '3'){
-            result = a * b;
-        }else if (operations == '4'){
-            result = a / b;
-        }else {
-            System.out.println("riyazi emeliyyat uygun deyil!");
+        double netice = hesablamaEmeliyyati(a,b,operations);
+        System.out.println(netice);
+    }
+
+    public static double reqemTelebEt(String mesaj){
+        System.out.print(mesaj);
+        return new Scanner(System.in).nextDouble();
+    }
+    public static char emeliyyatSecimi(String mesaj){
+        System.out.println(mesaj);
+        return new Scanner(System.in).nextLine().charAt(0);
+    }
+    public static double hesablamaEmeliyyati(double a,double b,char operations){
+        double result = 0;
+        switch (operations){
+            case '1':
+                result =  a + b;
+                break;
+            case '2':
+                result = a - b;
+                break;
+            case '3':
+                result =a * b;
+                break;
+            case '4':
+                result = a / b;
+                break;
+            default:
+                System.out.println("riyazi emeliyyat uygun deyil.");
         }
-        System.out.println(result);
+        return result;
     }
 }
